@@ -79,20 +79,29 @@
             gap: 16px;
         }
         .path-card {
-            border: 1px solid #e8ecf1;
+            background: #f8f9fb;
             border-radius: 12px;
             padding: 20px;
-            transition: border-color 0.2s;
         }
-        .path-card:hover { border-color: #53c1de; }
         .path-card .path-icon { font-size: 1.6em; margin-bottom: 8px; }
         .path-card h3 { font-size: 1em; font-weight: 600; margin-bottom: 6px; }
         .path-card p { font-size: 0.88em; color: #555; }
         .path-card .path-steps {
-            margin-top: 10px;
-            font-size: 0.82em;
+            margin-top: 12px;
+            font-size: 0.85em;
             color: #0f3460;
-            font-weight: 500;
+            font-weight: 600;
+            background: #e8ecf1;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+        .path-label {
+            font-size: 0.78em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
         }
 
         /* ---- Category ---- */
@@ -156,15 +165,34 @@
             color: #555;
             flex: 1;
         }
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
         .card-tag {
             display: inline-block;
-            margin-top: 14px;
             font-size: 0.75em;
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 6px;
-            align-self: flex-start;
         }
+        .card-cta {
+            font-size: 0.82em;
+            font-weight: 600;
+            color: #0f3460;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .card:hover .card-cta { color: #53c1de; }
+        .card-cta::after {
+            content: '\2192';
+            font-size: 1.1em;
+            transition: transform 0.2s;
+        }
+        .card:hover .card-cta::after { transform: translateX(3px); }
 
         /* Tag colors */
         .tag-fundamento  { background: #e8f5e9; color: #2e7d32; }
@@ -209,24 +237,27 @@
 
     <!-- Trilhas sugeridas -->
     <section class="paths">
-        <h2>Por onde comecar?</h2>
+        <h2>Nao sabe por onde comecar? Veja nossas sugestoes de trilha:</h2>
         <div class="path-cards">
             <div class="path-card">
                 <div class="path-icon">🌱</div>
                 <h3>Sou iniciante em tech</h3>
                 <p>Comece pelos fundamentos: logica de programacao, depois Git para organizar seu codigo e SQL para entender dados.</p>
+                <div class="path-label">Ordem sugerida</div>
                 <div class="path-steps">Logica → Git → SQL → Python</div>
             </div>
             <div class="path-card">
                 <div class="path-icon">🚀</div>
                 <h3>Quero criar aplicacoes web</h3>
                 <p>Aprenda React + Vite para o frontend e Supabase para o backend. Use DevOps para colocar no ar.</p>
+                <div class="path-label">Ordem sugerida</div>
                 <div class="path-steps">React + Vite → Supabase → DevOps</div>
             </div>
             <div class="path-card">
                 <div class="path-icon">⚡</div>
                 <h3>Quero automatizar tarefas</h3>
                 <p>Comece com logica de programacao, aprenda a conectar servicos com n8n e escale com DevOps.</p>
+                <div class="path-label">Ordem sugerida</div>
                 <div class="path-steps">Logica → n8n → DevOps</div>
             </div>
         </div>
@@ -243,19 +274,28 @@
                 <div class="card-emoji">🧠</div>
                 <h3>Logica de Programacao</h3>
                 <p>Seu primeiro passo no mundo da programacao. Aprenda a pensar como um desenvolvedor: variaveis, condicionais, lacos e funcoes.</p>
-                <span class="card-tag tag-fundamento">Fundamento</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-fundamento">Fundamento</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
             <a class="card" href="https://chatgpt.com/g/g-68e53c779dd48191bce72acbe90bc5c5-d4w-usando-o-git" target="_blank" rel="noopener noreferrer">
                 <div class="card-emoji">🌿</div>
                 <h3>Usando o Git</h3>
                 <p>Controle de versao na pratica. Aprenda a salvar, compartilhar e colaborar em projetos usando Git e GitHub.</p>
-                <span class="card-tag tag-fundamento">Fundamento</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-fundamento">Fundamento</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
             <a class="card" href="https://chatgpt.com/g/g-68e5359020b48191807b4104c6fd96f9-d4w-sql-e-introducao-a-banco-de-dados" target="_blank" rel="noopener noreferrer">
                 <div class="card-emoji">🗄️</div>
                 <h3>SQL e Banco de Dados</h3>
                 <p>Entenda como dados sao armazenados e consultados. Aprenda SQL do zero: SELECT, JOIN, filtros e modelagem de tabelas.</p>
-                <span class="card-tag tag-fundamento">Fundamento</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-fundamento">Fundamento</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
         </div>
     </section>
@@ -271,19 +311,28 @@
                 <div class="card-emoji">🐼</div>
                 <h3>Python com Pandas</h3>
                 <p>Analise e manipule dados com Python. Aprenda a carregar planilhas, limpar dados, criar graficos e gerar insights.</p>
-                <span class="card-tag tag-dev">Desenvolvimento</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-dev">Desenvolvimento</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
             <a class="card" href="https://chatgpt.com/g/g-69af43a904a881918ed487fb72729b5e-d4w-react-vite" target="_blank" rel="noopener noreferrer">
                 <div class="card-emoji">⚛️</div>
                 <h3>React + Vite</h3>
                 <p>Crie interfaces web modernas e rapidas. Aprenda componentes, estado, rotas e como montar um projeto do zero com Vite.</p>
-                <span class="card-tag tag-dev">Desenvolvimento</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-dev">Desenvolvimento</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
             <a class="card" href="https://chatgpt.com/g/g-69af424932288191a3531a6a0510ff16-d4w-supabase" target="_blank" rel="noopener noreferrer">
                 <div class="card-emoji">⚡</div>
                 <h3>Supabase</h3>
                 <p>Seu backend completo em minutos. Banco de dados, autenticacao, storage e APIs prontas — a alternativa open source ao Firebase.</p>
-                <span class="card-tag tag-dev">Desenvolvimento</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-dev">Desenvolvimento</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
         </div>
     </section>
@@ -299,13 +348,19 @@
                 <div class="card-emoji">🚢</div>
                 <h3>DevOps</h3>
                 <p>Coloque suas aplicacoes no ar. Aprenda Docker, CI/CD, deploy automatizado e boas praticas para manter projetos em producao.</p>
-                <span class="card-tag tag-infra">Infraestrutura</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-infra">Infraestrutura</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
             <a class="card" href="https://chatgpt.com/g/g-69af4559e70081919117b27d8ed58a05-d4w-n8n" target="_blank" rel="noopener noreferrer">
                 <div class="card-emoji">🔗</div>
                 <h3>n8n</h3>
                 <p>Automatize fluxos de trabalho sem escrever codigo. Conecte apps, crie workflows visuais e deixe tarefas repetitivas no piloto automatico.</p>
-                <span class="card-tag tag-automacao">Automacao</span>
+                <div class="card-footer">
+                    <span class="card-tag tag-automacao">Automacao</span>
+                    <span class="card-cta">Ir para o curso</span>
+                </div>
             </a>
         </div>
     </section>
